@@ -25,8 +25,8 @@ app.get("/cadastro",(req,res)=>{
     res.json(vetMeuvetor)
 })
 
-app.get("/search",(req,res)=>{
- var {nome} = req.query;
+app.get("/search/:nome",(req,res)=>{
+ var {nome} = req.params;
  const foundUser = vetMeuvetor.find((user) => user.nome == nome);
  
  if (foundUser) {
