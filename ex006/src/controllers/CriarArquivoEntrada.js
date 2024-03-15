@@ -1,14 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 
-
 exports.paginaPrincipal = ((req, res) => {
 
     var { nome, numX } = req.params;
     var vetNumeros = [];
-
+    var inicio = new Date()
     for (let i = 0; i < numX; i++) {
-        vetNumeros.push(parseInt(((Math.random() * 9999.5))));
+        vetNumeros.push(parseInt(((Math.random() * 9999))));
     };
 
     let i, j, temp;
@@ -30,7 +29,7 @@ exports.paginaPrincipal = ((req, res) => {
     res.json({
         "Nome do arquivo": nome,
         "Conteúdo": vetNumeros
-        
     });
-    
+    var fim = new Date()
+    console.log(`Tempo de execução em milisegundos: ${fim.getTime() - inicio.getTime()}`);
 });
